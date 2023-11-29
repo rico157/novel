@@ -1,9 +1,9 @@
 import * as react_jsx_runtime from 'react/jsx-runtime';
-import { JSONContent } from '@tiptap/react';
+import { JSONContent, FocusPosition } from '@tiptap/react';
 import { EditorProps } from '@tiptap/pm/view';
 import { Extensions, Editor as Editor$1 } from '@tiptap/core';
 
-declare function Editor({ completionApi, className, defaultValue, extensions, editorProps, onUpdate, onDebouncedUpdate, debounceDuration, storageKey, disableLocalStorage, }: {
+declare function Editor({ completionApi, className, defaultValue, extensions, editorProps, onUpdate, onDebouncedUpdate, debounceDuration, storageKey, disableLocalStorage, autofocus, }: {
     /**
      * The API route to use for the OpenAI completion API.
      * Defaults to "/api/generate".
@@ -54,6 +54,11 @@ declare function Editor({ completionApi, className, defaultValue, extensions, ed
      * Defaults to false.
      */
     disableLocalStorage?: boolean;
+    /**
+     * The autofocus behavior for the editor.
+     * Defaults to 'start'.
+     */
+    autofocus?: FocusPosition | undefined;
 }): react_jsx_runtime.JSX.Element;
 
 export { Editor };

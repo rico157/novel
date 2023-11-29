@@ -225,7 +225,10 @@ ul[data-type=taskList] li[data-checked=true] > div > p {
 
 // src/ui/editor/index.tsx
 import { useEffect as useEffect5, useRef as useRef4, useState as useState4 } from "react";
-import { useEditor, EditorContent } from "@tiptap/react";
+import {
+  useEditor,
+  EditorContent
+} from "@tiptap/react";
 
 // src/ui/editor/plugins/upload-images.tsx
 import { toast } from "sonner";
@@ -16647,7 +16650,8 @@ function Editor2({
   },
   debounceDuration = 750,
   storageKey = "novel__content",
-  disableLocalStorage = false
+  disableLocalStorage = false,
+  autofocus = "start"
 }) {
   const [content, setContent] = use_local_storage_default(storageKey, defaultValue);
   const [hydrated, setHydrated] = useState4(false);
@@ -16665,7 +16669,7 @@ function Editor2({
       onUpdate(e.editor);
       debouncedUpdates(e);
     },
-    autofocus: "end"
+    autofocus
   });
   const { complete, completion, isLoading, stop } = useCompletion2({
     id: "novel",
