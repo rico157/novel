@@ -1142,7 +1142,7 @@ var defaultExtensions = [
       if (node.type.name === "heading") {
         return `Heading ${node.attrs.level}`;
       }
-      return "Press '/' for commands, or '++' for AI autocomplete...";
+      return "Press '/' for commands...";
     },
     includeChildren: true
   }),
@@ -16661,25 +16661,8 @@ function Editor2({
     extensions: [...defaultExtensions, ...extensions],
     editorProps: __spreadValues(__spreadValues({}, defaultEditorProps), editorProps),
     onUpdate: (e) => {
-      const selection = e.editor.state.selection;
-      const lastTwo = getPrevText(e.editor, {
-        chars: 2
-      });
-      if (lastTwo === "++" && !isLoading) {
-        e.editor.commands.deleteRange({
-          from: selection.from - 2,
-          to: selection.from
-        });
-        complete(
-          getPrevText(e.editor, {
-            chars: 5e3
-          })
-        );
-        import_analytics2.default.track("Autocomplete Shortcut Used");
-      } else {
-        onUpdate(e.editor);
-        debouncedUpdates(e);
-      }
+      onUpdate(e.editor);
+      debouncedUpdates(e);
     },
     autofocus: "end"
   });
