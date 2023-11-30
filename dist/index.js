@@ -1016,7 +1016,7 @@ function DragHandle(options) {
           rect.width = options.dragHandleWidth;
           if (!dragHandleElement)
             return;
-          const offsetToHide = rect.left - 10;
+          const offsetToHide = rect.left - 40;
           if (event.clientX < offsetToHide) {
             hideDragHandle();
           } else {
