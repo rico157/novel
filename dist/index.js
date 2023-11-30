@@ -1008,7 +1008,7 @@ function DragHandle(options) {
           const lineHeight = parseInt(compStyle.lineHeight, 10);
           const paddingTop = parseInt(compStyle.paddingTop, 10);
           const rect = absoluteRect(node);
-          rect.top += (lineHeight - 34) / 2;
+          rect.top += (lineHeight - 14) / 2;
           rect.top += paddingTop;
           if (node.matches("ul:not([data-type=taskList]) li, ol li")) {
             rect.left -= options.dragHandleWidth;
@@ -1016,7 +1016,7 @@ function DragHandle(options) {
           rect.width = options.dragHandleWidth;
           if (!dragHandleElement)
             return;
-          const offsetToHide = rect.left - 30;
+          const offsetToHide = rect.left - 25;
           console.log(event.clientX, offsetToHide);
           if (event.clientX < offsetToHide) {
             hideDragHandle();
