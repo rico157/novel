@@ -16646,8 +16646,7 @@ function Editor2({
   },
   debounceDuration = 750,
   storageKey = "novel__content",
-  disableLocalStorage = false,
-  autofocus = "start"
+  disableLocalStorage = false
 }) {
   const [content, setContent] = use_local_storage_default(storageKey, defaultValue);
   const [hydrated, setHydrated] = (0, import_react11.useState)(false);
@@ -16664,8 +16663,8 @@ function Editor2({
     onUpdate: (e) => {
       onUpdate(e.editor);
       debouncedUpdates(e);
-    }
-    // autofocus,
+    },
+    autofocus: false
   });
   const { complete, completion, isLoading, stop } = (0, import_react13.useCompletion)({
     id: "novel",
