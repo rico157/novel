@@ -943,12 +943,12 @@ function DragHandle(options) {
   let dragHandleElement = null;
   function hideDragHandle() {
     if (dragHandleElement) {
-      dragHandleElement.classList.add("hidden");
+      dragHandleElement.classList.add("visually-hidden");
     }
   }
   function showDragHandle() {
     if (dragHandleElement) {
-      dragHandleElement.classList.remove("hidden");
+      dragHandleElement.classList.remove("visually-hidden");
     }
   }
   return new Plugin2({
@@ -1000,9 +1000,13 @@ function DragHandle(options) {
           rect.width = options.dragHandleWidth;
           if (!dragHandleElement)
             return;
-          dragHandleElement.style.left = `${rect.left - rect.width}px`;
-          dragHandleElement.style.top = `${rect.top}px`;
-          showDragHandle();
+          if (event.clientX < rect.left) {
+            hideDragHandle();
+          } else {
+            dragHandleElement.style.left = `${rect.left - rect.width}px`;
+            dragHandleElement.style.top = `${rect.top}px`;
+            showDragHandle();
+          }
         },
         keydown: () => {
           hideDragHandle();
