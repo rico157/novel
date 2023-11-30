@@ -16668,8 +16668,8 @@ function Editor2({
     onUpdate: (e) => {
       onUpdate(e.editor);
       debouncedUpdates(e);
-    },
-    autofocus
+    }
+    // autofocus,
   });
   const { complete, completion, isLoading, stop } = useCompletion2({
     id: "novel",
