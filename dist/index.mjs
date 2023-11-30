@@ -992,7 +992,6 @@ function DragHandle(options) {
           const lineHeight = parseInt(compStyle.lineHeight, 10);
           const paddingTop = parseInt(compStyle.paddingTop, 10);
           const rect = absoluteRect(node);
-
           rect.top += (lineHeight - 14) / 2;
           rect.top += paddingTop;
           if (node.matches("ul:not([data-type=taskList]) li, ol li")) {
@@ -1001,9 +1000,7 @@ function DragHandle(options) {
           rect.width = options.dragHandleWidth;
           if (!dragHandleElement)
             return;
-
           const offsetToHide = rect.left - 25;
-          console.log(event.clientX, offsetToHide);
           if (event.clientX < offsetToHide) {
             hideDragHandle();
           } else {
@@ -1890,7 +1887,7 @@ var EditorBubbleMenu = (props) => {
     shouldShow: ({ state, editor }) => {
       const { selection } = state;
       const { empty } = selection;
-      if (editor.isActive("image") || empty || isNodeSelection(selection)) {
+      if (!editor.isEditable || editor.isActive("image") || empty || isNodeSelection(selection)) {
         return false;
       }
       return true;
@@ -1940,7 +1937,7 @@ var EditorBubbleMenu = (props) => {
           "button",
           {
             onClick: item.command,
-            className: "novel-p-2 novel-text-stone-600 novel-bg-white novel-border-transparent hover:novel-bg-stone-100 active:novel-bg-stone-200",
+            className: "novel-border-transparent novel-bg-white novel-p-2 novel-text-stone-600 hover:novel-bg-stone-100 active:novel-bg-stone-200",
             type: "button",
             children: /* @__PURE__ */ jsx7(
               item.icon,

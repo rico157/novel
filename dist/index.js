@@ -1017,7 +1017,6 @@ function DragHandle(options) {
           if (!dragHandleElement)
             return;
           const offsetToHide = rect.left - 25;
-          console.log(event.clientX, offsetToHide);
           if (event.clientX < offsetToHide) {
             hideDragHandle();
           } else {
@@ -1887,7 +1886,7 @@ var EditorBubbleMenu = (props) => {
     shouldShow: ({ state, editor }) => {
       const { selection } = state;
       const { empty } = selection;
-      if (editor.isActive("image") || empty || (0, import_react7.isNodeSelection)(selection)) {
+      if (!editor.isEditable || editor.isActive("image") || empty || (0, import_react7.isNodeSelection)(selection)) {
         return false;
       }
       return true;
@@ -1937,7 +1936,7 @@ var EditorBubbleMenu = (props) => {
           "button",
           {
             onClick: item.command,
-            className: "novel-p-2 novel-text-stone-600 novel-bg-white novel-border-transparent hover:novel-bg-stone-100 active:novel-bg-stone-200",
+            className: "novel-border-transparent novel-bg-white novel-p-2 novel-text-stone-600 hover:novel-bg-stone-100 active:novel-bg-stone-200",
             type: "button",
             children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
               item.icon,
