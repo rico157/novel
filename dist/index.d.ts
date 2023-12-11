@@ -1,4 +1,3 @@
-import * as react_jsx_runtime from 'react/jsx-runtime';
 import { JSONContent } from '@tiptap/react';
 import { EditorProps } from '@tiptap/pm/view';
 import { Extensions, Editor as Editor$1 } from '@tiptap/core';
@@ -54,6 +53,6 @@ declare function Editor({ completionApi, className, defaultValue, extensions, ed
      * Defaults to false.
      */
     disableLocalStorage?: boolean;
-}): react_jsx_runtime.JSX.Element;
+}): JSX.Element;
 
 export { Editor };
